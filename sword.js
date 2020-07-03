@@ -7,7 +7,7 @@ const skip = document.getElementById("skip")
 // isi array untuk shuffle
 
 let animals = [
-    'kalajengking', 'kepiting', 'kelabang', 'belalang', 'belatung', 'kangguru', 'belatung', 'bunglon', 'harimau', 'cendrawasih', 'jerapah', 'banteng', 'beruang', 'kecebong', 'kumbang', 'penyu', 'kijang', 'biawak', 'bekantan'
+    'kalajengking', 'kepiting', 'kelabang', 'belalang', 'belatung', 'kangguru', 'belatung', 'bunglon', 'harimau', 'cendrawasih', 'jerapah', 'banteng', 'beruang', 'kecebong', 'kumbang', 'penyu', 'kijang', 'biawak', 'serigala'
 ]
 
 
