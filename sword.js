@@ -2,6 +2,7 @@ const problem = document.getElementById('problem')
 const timer = document.getElementById('timer')
 const counter = document.getElementById('counter')
 const answer = document.getElementById('answer')
+const skip = document.getElementById("skip")
 
 // isi array untuk shuffle
 
@@ -44,7 +45,7 @@ function shuffleProblem(arr) {
         arr[j] = temp;
     }
 
-    for (let j=0; j<5; j++) {
+    for (let j=0; j<10; j++) {
         questions.push(arr[j])
     }
     return questions;
@@ -77,6 +78,7 @@ function swordGame () {
     
     let i = 0;
     let questions = shuffleProblem(animals);
+    let answered = 0;
 
     problem.innerHTML = shuffle(questions[i])
     counter.innerHTML = `${i+1}/${questions.length}`
@@ -86,12 +88,43 @@ function swordGame () {
         if (x == questions[i]) {
             i++
             totalTime += totalSeconds
+            answered++
             totalSeconds = 0;
             problem.innerHTML = shuffle(questions[i])
             counter.innerHTML = `${i+1}/${questions.length}`
             answer.value = ''
         } 
+        
+        if (i == questions.length) {
+            problem.innerHTML = `Answered ${answered} problem(s). Average completion time ${totalTime/questions.length} seconds/problem.`
+            counter.innerHTML = ''
+            counter.remove()
+            timer.remove()
+            answer.remove()
+            skip.remove()
+
+        }
     })
+    document.getElementById("skip").onclick = skipButton
+    
+    function skipButton() {
+        i++
+        if (i == questions.length) {
+            problem.innerHTML = `Answered ${answered} problem(s). Average completion time ${totalTime/questions.length} seconds/problem.`
+            counter.innerHTML = ''
+            counter.remove()
+            timer.remove()
+            answer.remove()
+            skip.remove()
+        }
+        totalTime += totalSeconds
+        totalSeconds = 0;
+        problem.innerHTML = shuffle(questions[i])
+        counter.innerHTML = `${i+1}/${questions.length}`
+        answer.value = ''
+    }
+    
 }
+
 
 swordGame()
